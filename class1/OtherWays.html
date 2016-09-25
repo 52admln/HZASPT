@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" value="0" id="aqi-text">
+    <select name="" id="aqi-type">
+        <option value="2">二进制</option>
+        <option value="8">八进制</option>
+        <option value="10">十进制</option>
+        <option value="16">十六进制</option>
+    </select>
+    <input type="button" value="提交" id="aqi-btn">
+    <p id="showRusult"></p>
+
+    <script type="text/javascript">
+        /**
+         * 获取数据
+         * @return Object 返回一个包含输入字符及转换类型的对象
+         */
+        function getData() {
+            var aqi_text = document.querySelector("#aqi-text");
+            var num_type = document.querySelector("#aqi-type").value;
+            var num_text = Number(aqi_text.value); //将本文类型转换为Number类型
+            return {
+                num_type: num_type,
+                num_text: num_text
+            };
+        }
+        /**
+         * 转换进制
+         * @return String 返回一个结果字符串
+         */
+        function changeNum() {
+            var obj = getData();
+            var text = obj.num_text;
+            var type = obj.num_type;
+            var new_num = text.toString(type); // 转换进制
+            return new_num;
+        }
+
+        /**
+         * 将内容渲染到节点中
+         */
+        function render() {
+            var result = changeNum();
+            showRusult.innerHTML = result;
+        }
+
+        /**
+         * 给按钮绑定事件
+         */
+        function init() {
+            var aqi_btn = document.querySelector("#aqi-btn");
+
+            aqi_btn.onclick = function() {
+                render();
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

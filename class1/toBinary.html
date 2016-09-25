@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="0" id="aqi-text">
+    <input type="button" name="name" id="aqi-btn" value="计算">
+    <p id="show-text"></p>
+    <script type="text/javascript">
+    /**
+     * 转换为二进制
+     * @return 返回一个数组
+     */
+    function toBinary() {
+        var num = getData();
+        var temp = num;
+        var nums = []; //存放二进制数字
+        while (temp > 0) {
+            var test = temp % 2;
+            temp = parseInt(temp / 2);
+            nums.push(test);
+
+        }
+        var new_num = nums.reverse();
+        return new_num;
+    }
+    /**
+     * 获取用户输入数据
+     * @return 返回获取的数据
+     */
+    function getData () {
+        var aqi_text = document.querySelector("#aqi-text").value;
+        return aqi_text;
+    }
+    /**
+     * 页面渲染，显示内容
+     */
+    function render() {
+        var show_text = document.querySelector("#show-text");
+        var data = toBinary().join("");
+        show_text.innerHTML = data;
+
+    }
+    /**
+     * 绑定按钮时间
+     */
+    function init() {
+        var aqi_btn = document.querySelector("#aqi-btn");
+
+        aqi_btn.onclick = function () {
+            render();
+        }
+    }
+    init()
+    </script>
+</body>
+</html>
