@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="myIpt">
+<input type="button" id="myBtn" value="Submit">
+<p id="showTxt"></p>
+</body>
+<script>
+    (function () {
+//        判断一个字符串中出现次数最多的字符，统计这个次数
+
+        var myBtn = document.querySelector("#myBtn");
+        myBtn.addEventListener("click", countMost);
+
+        function countMost() {
+            var str = document.querySelector("#myIpt").value;
+            var _char = "";
+            var _count = 0;
+            for (var i = 0; i < str.length; i++) {
+                var curStr = str.substr(i, 1);
+                var _tempCount = 0;
+                _tempCount = str.match(new RegExp(curStr, "g")).length;
+                if (_tempCount > _count) {
+                    _count = _tempCount;
+                    _char = curStr;
+                }
+            }
+            document.querySelector("#showTxt").innerHTML = "字符：" + _char + "<br>次数：" + _count;
+
+        }
+
+
+    })()
+</script>
+</html>

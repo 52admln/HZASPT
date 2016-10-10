@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function () {
+//        一个新入职（25岁），月工资为2000元的员工，每年涨工资20%，到退休时（60岁）的月工资是多少？ 直到退休拿了多少钱
+        var salary = 2000; // 每月工资
+        var profit = 0;
+        for (var i = 25; i <= 60; i++) {
+            if(i==25) {
+                profit += (salary * 12);
+            } else {
+                salary = parseInt(salary * 1.2);
+                profit += (salary * 12);
+            }
+        }
+        document.write("工资：" + salary + "，直到退休拿了" + profit);
+    })();
+</script>
+</html>

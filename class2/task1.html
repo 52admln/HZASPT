@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="myIpt">
+<input type="button" id="myBtn" value="Submit">
+<p id="showTxt"></p>
+</body>
+<script>
+    (function () {
+// 书写一个函数，要求将字符串倒着打印出来：例：输入hello world 输出dlrow olleh
+        var myBtn = document.querySelector("#myBtn");
+
+        myBtn.addEventListener("click", reverse);
+
+        function reverse() {
+            var myStr = document.querySelector("#myIpt").value;
+            var tempStr = "";
+            for (var i = myStr.length; i > 0; i--) {
+                tempStr += myStr.substr(i - 1, 1);
+            }
+            render(tempStr);
+        }
+
+        // render
+        function render(str) {
+            document.querySelector("#showTxt").innerHTML = str;
+        }
+    })();
+
+</script>
+</html>

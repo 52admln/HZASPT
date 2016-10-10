@@ -17,14 +17,16 @@
         var num = getData();
         var temp = num;
         var nums = []; //存放二进制数字
+        if(num == 0) {
+            nums.push(num);
+        }
         while (temp > 0) {
             var test = temp % 2;
             temp = parseInt(temp / 2);
             nums.push(test);
 
         }
-        var new_num = nums.reverse();
-        return new_num;
+        return nums.reverse();
     }
     /**
      * 获取用户输入数据

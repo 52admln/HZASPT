@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function () {
+// 打印出1-10000之间的所有对称数(如121,1331,2442)
+//        字符串反转函数
+        function reverse(str) {
+            str = str.toString();
+            var tempStr = "";
+            for (var i = str.length; i > 0; i--) {
+                tempStr += str.substr(i - 1, 1);
+            }
+            return tempStr;
+        }
+
+        for(var i=1; i<=10000; i++) {
+            var _str = reverse(i);
+            if(i == _str) {
+                document.write(i+"<br>");
+            }
+        }
+    })();
+</script>
+</html>
