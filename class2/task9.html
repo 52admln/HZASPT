@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 函数体内部，局部变量的优先级比同名的全局变量高
+    var n = 0;
+    function a() {
+        var n = 10;
+        function b() {
+            n++;
+        }
+        b();
+        return b;
+    }
+    var c = a();
+    c();
+    alert(n); // 在函数体外部，所以优先查询到了 绑定在window上的n变量engjia zengjia le
+</script>
+</html>
