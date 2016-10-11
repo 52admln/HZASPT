@@ -21,9 +21,10 @@
             var _char = "";
             var _count = 0;
             for (var i = 0; i < str.length; i++) {
-                var curStr = str.substr(i, 1);
+                var curStr = str.substr(i, 1); // 截取一个字符
                 var _tempCount = 0;
-                _tempCount = str.match(new RegExp(curStr, "g")).length;
+                _tempCount = str.match(new RegExp(curStr, "g")).length; // String.match方法匹配
+                                                                        // 得到一个数组,数组长度就是出现次数
                 if (_tempCount > _count) {
                     _count = _tempCount;
                     _char = curStr;
