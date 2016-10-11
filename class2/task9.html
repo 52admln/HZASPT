@@ -20,6 +20,7 @@
     }
     var c = a();
     c();
-    alert(n); // 在函数体外部，所以优先查询到了 绑定在window上的n变量
+    // 在函数体外部，所以优先查询到了 绑定在window上的n变量
+    alert(n); // n => 0
 </script>
 </html>
