@@ -9,10 +9,11 @@
 </body>
 <script>
     (function () {
-// 打印出1-10000之间的所有对称数(如121,1331,2442)
+//        打印出1-10000之间的所有对称数(如121,1331,2442)
 //        字符串反转函数
         function reverse(str) {
-            str = str.toString();
+            //str = str.toString(); //强制转换成String
+            str = str + ""; // 另一个方法
             var tempStr = "";
             for (var i = str.length; i > 0; i--) {
                 tempStr += str.substr(i - 1, 1);
@@ -22,7 +23,7 @@
 
         for(var i=1; i<=10000; i++) {
             var _str = reverse(i);
-            if(i == _str) {
+            if(i == _str && i > 10) { // 11 - 9999
                 document.write(i+"<br>");
             }
         }
