@@ -19,9 +19,13 @@
         function reverse() {
             var myStr = document.querySelector("#myIpt").value;
             var tempStr = "";
-            for (var i = myStr.length; i > 0; i--) {
-                tempStr += myStr.substr(i - 1, 1);
-            }
+            /*
+             for (var i = myStr.length; i > 0; i--) {
+             // tempStr += myStr.substr(i - 1, 1); //方法一
+             tempStr += myStr[i-1]; // 方法二
+             }
+             */
+            tempStr = myStr.split(",").reverse().join(); //方法三
             render(tempStr);
         }
 
