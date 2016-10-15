@@ -13,12 +13,12 @@
         var salary = 2000; // 每月工资
         var profit = 0;
         for (var i = 25; i <= 60; i++) {
-            if(i==25) {
-                profit += (salary * 12);
-            } else {
-                salary = parseInt(salary * 1.2);
+            if (i == 25) {
                 profit += (salary * 12);
             }
+            profit += (salary * 12);
+            salary = Math.round((salary * 1.2) * 100) / 100;
+
         }
         document.write("工资：" + salary + "，直到退休拿了" + profit);
     })();
