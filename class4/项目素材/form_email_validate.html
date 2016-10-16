@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>邮箱验证</title>
+    <link href="libs/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">邮箱验证（原生JS）</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">邮件</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">登录</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">邮箱验证（HTML5）</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">邮箱验证</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">密码</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">登录</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- jquery 已经帮你引用好了 -->
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        //在form表单提交之前前(form的属性onsubmit='return validateForm()')验证数据合法性 返回true 或false
+        function validateForm() {
+
+            var emailText = document.querySelector("#inputEmail3").value;
+            var pwdText = document.querySelector("#inputPassword3").value;
+            if (emailCheck(emailText) === false) {
+                alert("请输入正确邮箱地址");
+                return false;
+            }
+            if (pwdText == "") {
+                alert("请输入密码");
+                return false;
+            }
+            alert("提交成功");
+            return true;
+        }
+
+        function emailCheck(email) {
+            var emailPat = /^(.+)@(.+)$/;
+            var matchArray = email.match(emailPat);
+            if (email == "" || matchArray == null) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

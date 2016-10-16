@@ -33,16 +33,14 @@
      * @return 返回获取的数据
      */
     function getData () {
-        var aqi_text = document.querySelector("#aqi-text").value;
-        return aqi_text;
+        return document.querySelector("#aqi-text").value;
     }
     /**
      * 页面渲染，显示内容
      */
     function render() {
         var show_text = document.querySelector("#show-text");
-        var data = toBinary().join("");
-        show_text.innerHTML = data;
+        show_text.innerHTML = toBinary().join("");
 
     }
     /**
