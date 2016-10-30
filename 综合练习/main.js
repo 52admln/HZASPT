@@ -10,7 +10,7 @@ var cart = [], //存放购物车内的商品
     totalGoods = 0; //总商品数量
 
 
-imgList.on("click", function(e) {
+imgList.on("click", function (e) {
     var target = e.target;
     console.log(target.dataset.name);
     var id = target.dataset.goodsid,
@@ -20,11 +20,11 @@ imgList.on("click", function(e) {
     add(id, src, name, price, price);
 });
 
-$('#cartLi').on("click", function(e) {
+$('#cartLi').on("click", function (e) {
     var target = e.target;
     var delPrice = 0; //要删除的商品总价格
-    var curtotalNum= 0; //当前商品数目
-    var curIndex= 0; //商品的索引位置
+    var curtotalNum = 0; //当前商品数目
+    var curIndex = 0; //商品的索引位置
     var cursigPrice = 0; //单个商品单价
     var curtotalsigPrice = 0; //单个商品总价格
     if (target.id == "del-btn") {
@@ -137,17 +137,3 @@ function add(id, src, name, price, allPrice) {
     shoppingWarn.html('一共 <code>' + totalGoods + '</code> 宝贝');
     priceAll.html(totalPrice);
 }
-
-function plusNum() {
-
-}
-
-function minsNum() {
-
-}
-
-// 初始化
-function init() {
-
-}
-init();
