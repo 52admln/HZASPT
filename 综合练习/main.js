@@ -1,9 +1,11 @@
-var imgList = $('#liList > li > img'), // 上方商品图片
+var liList = $('#liList > li'),
+    imgList = liList.find("img"), // 上方商品图片
     shopingList = $('#cartLi'), //下方购物车内容
     cartText = $('#cartText'), // 当前购物车当中的商品数量
-    shoppingWarn = $('#shopping-warn'), // 购物车信息提示
+    shoppingWarn = $('#shopping-warn'),  // 购物车信息提示
     priceAll = $('.tota-priceAll > span'); // 显示总价格
 
+var update ;
 
 var cart = [], //存放购物车内的商品
     totalPrice = 0, //总价格
@@ -20,7 +22,7 @@ imgList.on("click", function (e) {
     add(id, src, name, price, price);
 });
 
-$('#cartLi').on("click", function (e) {
+shopingList.on("click", function (e) {
     var target = e.target;
     var delPrice = 0; //要删除的商品总价格
     var curtotalNum = 0; //当前商品数目
@@ -33,7 +35,7 @@ $('#cartLi').on("click", function (e) {
         curtotalNum = $(target).parent().parent().find(".cart-num > input").val().replace("件", "");
         curIndex = cart.indexOf($(target).parent().parent().data("goodsid"));
 
-        totalPrice = totalPrice - delPrice * 1; //总价格
+        totalPrice = totalPrice - delPrice; //总价格
         totalGoods = totalGoods - curtotalNum; //商品总数
 
         cart.splice(curIndex, 1);
@@ -47,27 +49,23 @@ $('#cartLi').on("click", function (e) {
         cursigPrice = $(target).parent().parent().find(".price").html(); //商品单价
         curtotalNum++;
 
-        totalPrice = totalPrice + cursigPrice * 1; //当前商品总价格
-        totalGoods = ++totalGoods; //商品总数
-
-        curtotalsigPrice = cursigPrice * curtotalNum;
-        $(target).parent().parent().find(".total-price").html(curtotalsigPrice);
+        update = new Update(target,cursigPrice,curtotalNum,curtotalsigPrice);
+        Plus.prototype = update;
+        var plus = new Plus();
+        plus.render();
         updateData(totalPrice, totalGoods);
-
         $(target).siblings("input").val(curtotalNum + "件");
+
     }
     if (target.className == "shop-l") {
         curtotalNum = $(target).siblings("input").val().replace("件", "") * 1; //当前商品数目
         cursigPrice = $(target).parent().parent().find(".price").html(); //商品单价
         if (curtotalNum > 1) {
             curtotalNum--;
-
-            totalPrice = totalPrice - cursigPrice * 1; //当前商品总价格
-            totalGoods = --totalGoods; //商品总数
-
-            curtotalsigPrice = cursigPrice * curtotalNum;
-            $(target).parent().parent().find(".total-price").html(curtotalsigPrice);
-
+            update = new Update(target,cursigPrice,curtotalNum,curtotalsigPrice);
+            Reduce.prototype = update;
+            var reduce = new Reduce();
+            reduce.render();
             updateData(totalPrice, totalGoods);
         } else {
             curtotalNum = 1;
@@ -76,7 +74,35 @@ $('#cartLi').on("click", function (e) {
     }
 });
 
+function Update(target, sigPrice, totalNum, totalSigPrice) {
+    this.target = target;
+    this.sigPrice = sigPrice;
+    this.totalNum = totalNum;
+    this.totalSigPrice = totalSigPrice;
+}
+Update.prototype  = {
+    constructor: Update,
+    render: function () {
+        this.totalSigPrice = this.sigPrice * this.totalNum;
+        $(this.target).parent().parent().find(".total-price").html(this.totalSigPrice);
+        console.log(this.target, this.sigPrice, this.totalNum, this.totalSigPrice);
+    }
+};
 
+function Plus() {
+    totalPrice = totalPrice + this.sigPrice * 1; //当前商品总价格
+    totalGoods = ++totalGoods; //商品总数
+    console.log(totalPrice,totalGoods )
+}
+function Reduce() {
+    totalPrice = totalPrice - this.sigPrice * 1; //当前商品总价格
+    totalGoods = --totalGoods; //商品总数
+    console.log(totalPrice,totalGoods )
+}
+
+
+
+//更新价格及商品数目
 function updateData(price, goods) {
     priceAll.html(price); // 总价格
     shoppingWarn.find("code").html(goods); // 商品总数
@@ -113,8 +139,8 @@ function add(id, src, name, price, allPrice) {
         totalPrice = totalPrice + price * 1;
     } else {
         // 查找匹配项，更改数据
-        for (var i = 0; i < $('#cartLi > li').length; i++) {
-            if ($($('#cartLi').find("li")[i]).attr("data-goodsid") == id) {
+        for (var i = 0; i < liList.length; i++) {
+            if ($(shopingList.find("li")[i]).attr("data-goodsid") == id) {
                 var tagLi = $("#cartLi").find("li")[i],
                     inp = $(tagLi).find("input[type='text']").val(),
                     upDateNum = parseInt(inp);
@@ -134,6 +160,6 @@ function add(id, src, name, price, allPrice) {
         console.log(cart);
     }
     cartText.html(11);
-    shoppingWarn.html('一共 <code>' + totalGoods + '</code> 宝贝');
+    shoppingWarn.html('一共 <code>' + totalGoods + '</code> 个宝贝');
     priceAll.html(totalPrice);
 }
