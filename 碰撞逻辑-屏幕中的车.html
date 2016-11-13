@@ -5,25 +5,26 @@
 <title>碰撞逻辑-屏幕中的车</title>
 </head>
 <style>
-.block {
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	background-image: url(https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1478999559&di=640014350db3bf43bab4329c3ee8ef75&src=http://pic40.nipic.com/20140409/9038982_100123582143_2.jpg)
-}
-body {
-	position: relative;
-}
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	.car {
+		position:absolute; 
+	}
+	.block {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		background-image: url(https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1478999559&di=640014350db3bf43bab4329c3ee8ef75&src=http://pic40.nipic.com/20140409/9038982_100123582143_2.jpg)
+	}
+	body {
+		position: relative;
+	}
 </style>
 <body id="body" style="margin: 0 0 0 0;padding:0 0 0 0;">
 </body>
 <script type="text/javascript">
-var blocks=[];//专门存放墙块数组
-
-car1=new Car('BMW',"X5");
-
-initBlock(3);//该方法用来生成页面中墙块的个数
-
 function initBlock(n){
 	for(i=0;i<n;i++){
 		var left= randomRange(0,document.body.clientWidth-100);
@@ -39,9 +40,6 @@ function Block(left,top){
 	Block.prototype.height=100;
 	document.getElementById('body').innerHTML+='<div class="block" style="left:'+this.left+'px;top:'+this.top+'px;">			</div>';
 }
-
-
-
 function Car(brand,model){
 	this.brand=brand;
 	this.model=model;
@@ -74,14 +72,30 @@ function Car(brand,model){
 	}else if(this.brand="TOYOTA"){
 		this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
     }
-
-	Car.prototype.width=100;//图片的宽度 该属性
-	Car.prototype.height=75;//图片的高度
-	Car.prototype.dd=function(){
-		alert("滴滴");//公共属性
-	};
-	document.getElementById('body').innerHTML+="<div style='z-index:1000;position:absolute;left:0px;top:0px;' id="+model+"><img style='width:"+this.width+"px;height:"+this.height+";' src="+this.img+"></img></span></div>";
 }
+	
+var blocks=[];//专门存放墙块数组
+// 对Car的公有属性及方法进行扩展
+// 这里要写在 实例化对象之前，否则重写后prototype则改变了指向
+Car.prototype = {
+	constructor: Car,
+	width: 100,
+	height: 75,
+	dd: function () {
+		alert("滴滴");//公共属性
+	}
+}
+var car1=new Car('BMW',"X5");
+initBlock(3);//该方法用来生成页面中墙块的个数
+	
+window.onload = function () {
+	document.getElementById('body').innerHTML
+		+="<div class='car' style='top:0; left:0;' id="+car1.model+">"
+			+"<img style='width:"+car1.width+"px;height:"+car1.height+";' src="+car1.img+">"
+			+"</img>"
+		+"</div>";
+}
+	
 document.onkeydown=function(){
 	var default_step=100;//默认移动的步长
 	var e=event;
