@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>在线考试系统</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -18,64 +18,118 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">在线考试系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#">请先登录!</a></li>
             </ul>
+            <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<li><a href="#">请先登录!</a></li>-->
+            <!--<li><a href="#">Settings</a></li>-->
+            <!--<li><a href="#">Profile</a></li>-->
+            <!--<li><a href="#">Help</a></li>-->
+            <!--</ul>-->
         </div>
     </div>
 </nav>
 <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="login-container-bg"></div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container login-container-bg">
+                <div class=""></div>
             </div>
-            <div class="col-md-3">
-                <form role="form" class="login-form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="col-md-1"></div>
         </div>
+        <div class="col-md-4">
+            <div class="login-form">
+                <div class="form-group" id="loginType">
+                    <label>登录身份</label>
+                    <select class="form-control">
+                        <option value="student" selected>学生</option>
+                        <option value="teacher">教师</option>
+                        <option value="admin">管理员</option>
+                    </select>
+                </div>
+                <!-- student -->
+                <div class="sourceTab">
+                    <form id="studentForm" role="form" name="login" method="post">
+                        <div class="form-group">
+                            <label>手机号码</label>
+                            <input type="tel" name="student_tel" class="form-control " placeholder="输入手机号">
+                        </div>
+                        <div class="form-group">
+                            <label>验证码</label>
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <input type="text" name="student_code" class="form-control" placeholder="输入验证码">
+                                </div>
+                                <div class="col-xs-5">
+                                    <button type="button" class="btn btn-default btn-block" id="getVerifyCode">获取验证码</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--用于确认登录身份-->
+                        <input type="radio" name="login_type" value="student" style="display: none;" checked>
+                        <button type="submit" class="btn btn-primary btn-block">立即登录</button>
+                    </form>
+                </div>
+                <!-- teacher -->
+                <div class="sourceTab hidden">
+                    <form id="teacherForm" role="form" name="login" method="post">
+                        <div class="form-group">
+                            <label>教师帐号</label>
+                            <input type="text" name="user" class="form-control" placeholder="输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label >教师密码</label>
+                            <input type="password" name="pwd" class="form-control"  placeholder="输入密码">
+                        </div>
+                        <!--用于确认登录身份-->
+                        <input type="radio" name="login_type" value="teacher" style="display: none;" checked>
+                        <button type="submit" class="btn btn-primary btn-block">立即登录</button>
+                    </form>
+                </div>
+                <!-- admin -->
+                <div class="sourceTab hidden">
+                    <form id="adminForm" role="form" name="login" method="post">
+                        <div class="form-group">
+                            <label>管理员帐号</label>
+                            <input type="text" name="user" class="form-control" placeholder="输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label>管理员密码</label>
+                            <input type="password" name="pwd" class="form-control" placeholder="输入密码">
+                        </div>
+                        <!--用于确认登录身份-->
+                        <input type="radio" name="login_type" value="admin" style="display: none;" checked>
+                        <button type="submit" class="btn btn-primary btn-block">立即登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
+<div class="footer">
+    <div class="container">
+        <p class="text-center">Copyright 2016 杭州科技职业技术学院 在线考试系统</p>
+    </div>
+</div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
