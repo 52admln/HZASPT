@@ -1,0 +1,142 @@
+@import "common.css";
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+
+
+.nav-sidebar {
+    display: none;
+}
+.js-student .nav-student {
+    display: block;
+}
+.js-teacher .nav-teacher {
+    display: block;
+}
+.js-admin .nav-admin {
+    display: block;
+}
+
+.start-btn {
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+
+.qustion-list, .qustion-list li{
+    list-style: none;
+    padding-left: 0;
+}
+.qustion-list > li {
+    padding:20px;
+}
+.chose-item li:hover {
+    background: #f1f1f1;
+}
+.qustion-list > li:hover {
+    background: #f7f7f7;
+}
+
+
+@media (min-width: 992px) {
+
+    .exam-slider.affix, .exam-slider.affix-top {
+        width: 213px;
+    }
+
+}
+@media (min-width: 1200px) {
+    .exam-slider.affix, .exam-slider.affix-top  {
+        width:263px;
+    }
+}
+
+
+.exam-score-info {
+    margin-top: 40px;
+}

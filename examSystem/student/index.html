@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>在线考试系统</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/login.css">-->
+    <link rel="stylesheet" href="../css/student.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">在线考试系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="js-type">学生: </span>王永杰</a></li>
+                <li><a href="#">个人资料</a></li>
+                <li><a href="#">密码修改</a></li>
+                <li><a href="#">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <!-- js-student / js-teacher / js-admin -->
+        <div class="col-sm-3 col-md-2 sidebar js-student">
+            <ul class="nav nav-sidebar nav-student">
+                <li class="active"><a href="#">开始考试</a></li>
+                <li><a href="#">查看成绩</a></li>
+            </ul>
+            <ul class="nav nav-sidebar nav-teacher">
+                <li><a href="">试卷管理</a></li>
+                <li><a href="">审阅试卷</a></li>
+                <li><a href="">查询成绩</a></li>
+            </ul>
+            <ul class="nav nav-sidebar nav-admin">
+                <li><a href="">用户管理</a></li>
+                <li><a href="">试题管理</a></li>
+                <li><a href="">考试管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div class="before-start ">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> 当前考试科目</div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>考试标题</th>
+                                    <th>考试时间</th>
+                                    <th>考试分值</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Javascript 基础</td>
+                                    <td>1小时40分钟</td>
+                                    <td>100分</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-center page-header">考生须知</h2>
+                <ul>
+                    <li>考生在考试开始前30分钟开始入场。考试正式开始后，迟到的考生不允许进入考场参加考试。</li>
+                    <li>
+                        考生应在入场时出示准考证及准考证上要求的有效身份证件（身份证、护照或学生证）和照片，出示的证件类型应与注册使用的证件类型一致，否则将不允许参加考试。持学生证的考生请同时携带户口本，外籍考生必须携带护照，台湾考生必须携带台湾居民来往大陆通行证，港澳考生可携带港澳居民身份证。请确保有效证件必须在有效期内并贴有可识别的照片。考生若没有携带准考证、有效身份证件、或者照片与本人面貌不一致，都将不允许进入考场；持假证件者和被代考的考生，在五年内禁止参加TOEFL
+                        Junior考试。
+                    </li>
+                    <li>考生进入考场后将身份证件放置在桌面上方，以便检查。除证件外，所有其它个人物品，应放置在考场内指定的位置。</li>
+                    <li>考生不要将贵重物品带到考场，考场对考试期间丢失的个人物品不承担任何责任。</li>
+                    <li>考生在进入考场前必须彻底关闭手机、掌上电脑等电子设备，在整个考试过程中，手机等电子设备不允许打开或使用。</li>
+                    <li>在考场监考人员宣布考生可以离开考场之前，考生不能提前离开考场。考生因任何原因不能继续考试，需要到现场考务办公室等候，在考试结束后才能离开。</li>
+                    <li>对在考试过程中被发现有作弊行为的考生，我们保留进一步调查和处理直至取消其考试成绩的权利。</li>
+                    <li>
+                        考试过程中可能出现任何意外事故，考场监考人员都将按照ETS的规定提供现场解决方案，如果考生对解决方案有异议，需要在方案实施之前提出；否则，将被视为接受解决方案并承担该解决方案所带来的结果；考生接受现场解决方案后，对该事故及现场解决方案的投诉无效。
+                    </li>
+                </ul>
+
+
+                <div class="start-btn">
+                    <button type="button" class="btn btn-default btn-lg">选择考试科目</button>
+                    <button type="button" class="btn btn-primary btn-lg">开始考试</button>
+                </div>
+            </div>
+
+            <div class="on-start hidden">
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <h3 class="page-header">考试题</h3>
+                        <h4>一、单选题</h4>
+                        <ul class="qustion-list">
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item radio">
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        A:红色通道
+                                    </label></li>
+                                    <li><label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        B:绿色通道
+                                    </label></li>
+                                </ul>
+                                <div class="current-answer">
+                                    当前选择的答案是: <strong> A</strong>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <h4>二、多选题</h4>
+                        <ul class="qustion-list">
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <ul class="chose-item checkbox">
+                                    <li><label>
+                                        <input type="checkbox" value="">
+                                        Option one is this and that&mdash;be sure to include why it's great
+                                    </label></li>
+                                    <li><label>
+                                        <input type="checkbox" value="">
+                                        Option one is this and that&mdash;be sure to include why it's great
+                                    </label></li>
+                                    <li><label>
+                                        <input type="checkbox" value="">
+                                        Option one is this and that&mdash;be sure to include why it's great
+                                    </label></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4>三、简答题</h4>
+                        <ul class="qustion-list">
+                            <li>
+                                <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                <textarea name="" id="" cols="60" rows="5"></textarea>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                       <div class="exam-slider affix-top" id="myAffix">
+                           <h3 class="page-header">考试信息</h3>
+                           <div class="exam-time">
+                               <button type="button" class="btn btn-danger btn-lg btn-block">1 : 40 : 00</button>
+                           </div>
+                       </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../js/student.js"></script>
+</body>
+</html>
