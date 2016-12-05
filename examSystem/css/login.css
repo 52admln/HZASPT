@@ -20,6 +20,17 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+@media (max-width: 680px) {
+    .login-container-bg {
+        height: 350px;
+    }
+}
+@media (max-width: 420px) {
+    .login-container-bg {
+        height: 200px;
+    }
+}
 .login-form {
     margin-top: 45px;
     padding:30px 20px;
