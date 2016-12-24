@@ -42,13 +42,6 @@ $("#getVerifyCode").click(function () {
     })(this);
 });
 
-
-// jQuery validator 手机号码验证规则
-jQuery.validator.addMethod("isPhoneNum", function (value, element) {
-    var tel = /^1[34578]\d{9}$/;
-    return this.optional(element) || (tel.test(value));
-}, "请正确填写您的手机号码");
-
 // 表单验证
 $("#studentForm").validate({
     rules: {
@@ -183,5 +176,5 @@ function loginSession(username, usertype) {
     } else {
         alert("您当前浏览器不支持 LocalStorage")
     }
-    window.location.href = "./student/index.html";
+    window.location.href = "./"+usertype+"/index.html";
 }

@@ -1,0 +1,99 @@
+@import "./common.css";
+
+label.error {
+    width:100%;
+    background-color: #fcf8e3;
+    padding-right: 35px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #8a6d3b;
+    border: 1px solid transparent;
+    border-color: #faebcc;
+    border-radius: 4px;
+}
+
+.kinds {
+    list-style: none;
+    font-size: 16px;
+}
+
+.kinds>li {
+    float: left;
+    padding: 3px 20px 0 20px;
+    display: inline-block;
+}
+
+.kinds>li>a {
+    color: #000;
+    display: inline-block;
+}
+
+.paddingtop-20 {
+    padding-top: 20px;
+}
+
+.paddingtop-10 {
+    padding-top: 10px;
+}
+
+.selectBox li {
+    float: left;
+    list-style-type: none;
+}
+
+.selectBox li,
+.selectBox li a {
+    padding: 0 15px 0 15px;
+    text-decoration: none;
+}
+
+.activeA {
+    background-color: #428bca;
+    color: #fff;
+}
+
+.key-word {
+    height: 34px;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.retrivealBox {
+    background-color: #ededed;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.retrievalResult li {
+    list-style-type: none;
+}
+
+.btngroup li {
+    padding-left: 10px;
+}
+
+.td-center {
+    text-align: center;
+}
+
+.btn-block {
+    display: block;
+}
+
+.btn-bottom {
+    margin-bottom: 10px;
+}
+
+.mark {
+    color: #357ebd;
+}
+
+.score {
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+}

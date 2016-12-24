@@ -1,0 +1,15 @@
+@import "./common.css";
+
+.qustion-list, .qustion-list li{
+    list-style: none;
+    padding-left: 0;
+}
+.qustion-list > li {
+    padding:20px;
+}
+.chose-item li:hover {
+    background: #f1f1f1;
+}
+.qustion-list > li:hover {
+    background: #f7f7f7;
+}

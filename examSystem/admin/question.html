@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>试卷管理 - 在线考试后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/login.css">-->
+    <link rel="stylesheet" href="../css/admin.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">在线考试后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="js-username"></span></a></li>
+                <li><a href="#">个人资料</a></li>
+                <li><a href="#">密码修改</a></li>
+                <li><a href="#" class="js-logout">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <!-- js-student / js-teacher / js-admin -->
+        <div class="col-sm-3 col-md-2 sidebar js-student">
+            <ul class="nav nav-sidebar nav-student">
+                <li class=""><a href="./index.html">学生管理</a></li>
+                <li class=""><a href="./teacher.html">教师管理</a></li>
+                <li class="active"><a href="./question.html">考试管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-4 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <div class="col-md-2">
+                    <h3><span class="label label-default">考试管理</span></h3>
+                </div>
+                <div class="col-md-8"></div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row" style="padding-top: 50px">
+                <!--试题管理开始 -->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ">
+                        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                            <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">随机生成</a></li>
+                            <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">自定义生成</a></li>
+                            <li role="presentation"><a href="#third" role="tab" data-toggle="tab">删除/修改</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <button type="button" id="myStateButton" data-complete-text="Loading.
+                                       ..." class="btn btn-primary text-center" autocomplete="off" style="margin-top: 20px" onclick="creatBox()">
+                                    随机生成
+                                </button>
+                                <div id="creatbox">
+
+                                </div>
+                                <!-- Button trigger modal -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">消息框</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                嘻嘻！试卷发布成功啦！
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row paddingtop-10">
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>单选题</label>
+                                                    <select class="form-control" name="RadioButtonList ">
+                                                        <option value="第一套试卷" selected>第一套试卷</option>
+                                                        <option value="第二套试卷">第二套试卷</option>
+                                                        <option value="第三套试卷">第三套试卷</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>多选题</label>
+                                                    <select class="form-control">
+                                                        <option value="第一套试卷" selected>第一套试卷</option>
+                                                        <option value="第二套试卷">第二套试卷</option>
+                                                        <option value="第三套试卷">第三套试卷</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>判断题</label>
+                                                    <select class="form-control">
+                                                        <option value="第一套试卷" selected>第一套试卷</option>
+                                                        <option value="第二套试卷">第二套试卷</option>
+                                                        <option value="第三套试卷">第三套试卷</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>操作题</label>
+                                                    <select class="form-control">
+                                                        <option value="第一套试卷" selected>第一套试卷</option>
+                                                        <option value="第二套试卷">第二套试卷</option>
+                                                        <option value="第三套试卷">第三套试卷</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary pull-left" style=" margin-left: 15px" onclick="DIYchoose();">生成试卷
+                                            </button>
+                                        </div>
+                                        <div id="diybox">
+
+                                        </div>
+                                        <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">消息框</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        嘻嘻！试卷发布成功啦！
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane " id="third">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-12">
+                                        <div class="row paddingtop-20">
+                                            <div class="col-sm-3 col-md-1">
+                                                <span class="label label-default" style="font-size: 18px">年级</span>
+                                            </div>
+                                            <div class="col-sm-3 col-md-11">
+                                                <ul class="selectBox">
+                                                    <li><a href="#">大一</a></li>
+                                                    <li><a href="#">大二</a></li>
+                                                    <li><a href="#">大三</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row paddingtop-20">
+                                            <div class="col-sm-3 col-md-1">
+                                                <span class="label label-default" style="font-size: 18px">考试科目</span>
+                                            </div>
+                                            <div class="col-sm-3 col-md-11">
+                                                <ul class="selectBox">
+                                                    <li><a href="#">HTML5+CSS3</a></li>
+                                                    <li><a href="#">JAVASCRIPT</a></li>
+                                                    <li><a href="#">JQUERY</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row paddingtop-20">
+                                            <div class="col-sm-3 col-md-1">
+                                                <span class="label label-default" style="font-size: 18px">时间</span>
+                                            </div>
+                                            <div class="col-sm-3 col-md-11">
+                                                <ul class="selectBox">
+                                                    <li><a href="#">2014</a></li>
+                                                    <li><a href="#">2015</a></li>
+                                                    <li><a href="#">2016</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="keyword paddingtop-20 clearfix">
+                                            <span class="pull-left key-word">关键词：<span id="addkeyword"></span></span>
+                                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 25px">检索</button>
+                                        </div>
+                                        <div class="row paddingtop-20">
+                                            <div class="col-md-12 ">
+                                                <div class="retrivealBox clearfix">
+                                                    <ul class="retrievalResult pull-left">
+                                                        <li>杭州科技职业技术学院信息工程学院计算机大类Javascript期末考试</li>
+                                                        <li>命题人：*** &nbsp;审题人：*** &nbsp;</li>
+                                                    </ul>
+                                                    <ul class="retrievalResult clearfix pull-right btngroup">
+                                                        <li class="pull-left"><button type="button" class="btn btn-primary">修改</button></li>
+                                                        <li class="pull-left"><button type="button" class="btn btn-warning">删除</button></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="retrivealBox clearfix">
+                                                    <ul class="retrievalResult pull-left">
+                                                        <li>杭州科技职业技术学院信息工程学院计算机大类Javascript期末考试</li>
+                                                        <li>命题人：*** &nbsp;审题人：*** &nbsp;</li>
+                                                    </ul>
+                                                    <ul class="retrievalResult clearfix pull-right btngroup">
+                                                        <li class="pull-left"><button type="button" class="btn btn-primary">修改</button></li>
+                                                        <li class="pull-left"><button type="button" class="btn btn-warning">删除</button></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="retrivealBox clearfix">
+                                                    <ul class="retrievalResult pull-left">
+                                                        <li>杭州科技职业技术学院信息工程学院计算机大类Javascript期末考试</li>
+                                                        <li>命题人：*** &nbsp;审题人：*** &nbsp;</li>
+                                                    </ul>
+                                                    <ul class="retrievalResult clearfix pull-right btngroup">
+                                                        <li class="pull-left"><button type="button" class="btn btn-primary">修改</button></li>
+                                                        <li class="pull-left"><button type="button" class="btn btn-warning">删除</button></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="retrivealBox clearfix">
+                                                    <ul class="retrievalResult pull-left">
+                                                        <li>杭州科技职业技术学院信息工程学院计算机大类Javascript期末考试</li>
+                                                        <li>命题人：*** &nbsp;审题人：*** &nbsp;</li>
+                                                    </ul>
+                                                    <ul class="retrievalResult clearfix pull-right btngroup">
+                                                        <li class="pull-left"><button type="button" class="btn btn-primary">修改</button></li>
+                                                        <li class="pull-left"><button type="button" class="btn btn-warning">删除</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 试题添加结束  -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

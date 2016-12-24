@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师端 - 在线考试后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/login.css">-->
+    <link rel="stylesheet" href="../css/teacher.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">在线考试后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="js-username"></span></a></li>
+                <li><a href="#">个人资料</a></li>
+                <li><a href="#">密码修改</a></li>
+                <li><a href="#" class="js-logout">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 sidebar">
+            <ul class="nav nav-sidebar nav-student" id="typeofchose">
+                <li class="active"><a href="#">题目管理</a></li>
+                <li><a href="#">成绩管理</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-sm-10 col-sm-offset-2">
+            <div class="showbox clearfix paddingtop-20">
+                <!--题目添加开始 -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3><span class="label label-default ">题目管理</span></h3>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist" style="padding-top: 50px">
+                            <li role="presentation" class="active"><a href="#single" role="tab"
+                                                                      data-toggle="tab">单选题</a></li>
+                            <li role="presentation"><a href="#multi" role="tab" data-toggle="tab">多选题</a></li>
+                            <li role="presentation"><a href="#text" role="tab" data-toggle="tab">简答题</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!--单选题-->
+                            <div role="tabpanel" class="tab-pane active" id="single">
+                                <table class="table ">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="2" ><h4 class="">添加题目</h4></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>标题</td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>选项</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <button type="button" class="btn btn-default">新增</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>正确答案</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                            <button type="button" class="btn btn-primary">添加</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="js-single">
+                                    <h4 class="page-header">题目列表</h4>
+                                    <ul class="qustion-list js-single-question">
+                                        <li>
+                                            <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                            <ul class="chose-item radio">
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-1" value="1">
+                                                    A:红色通道
+                                                </label></li>
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-1" value="2">
+                                                    B:绿色通道
+                                                </label></li>
+                                            </ul>
+                                            <div class="current-answer">
+                                                当前选择的答案是:
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                            <ul class="chose-item radio">
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-2" value="1">
+                                                    A:红色通道
+                                                </label></li>
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-2" value="2">
+                                                    B:绿色通道
+                                                </label></li>
+                                            </ul>
+                                            <div class="current-answer">
+                                                当前选择的答案是:
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                            <ul class="chose-item radio">
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-3" value="1">
+                                                    A:红色通道
+                                                </label></li>
+                                                <li><label>
+                                                    <input type="radio" name="optionsRadio-3" value="2">
+                                                    B:绿色通道
+                                                </label></li>
+                                            </ul>
+                                            <div class="current-answer">
+                                                正确答案:
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!--多选题-->
+                            <div role="tabpanel" class="tab-pane" id="multi">
+
+                                <table class="table ">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="2" class="text-center">单选题添加</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>标题</td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>选项</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <button type="button" class="btn btn-default">新增</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>正确答案</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                            <button type="button" class="btn btn-primary">添加</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="js-multi">
+                                    <ul class="qustion-list">
+                                        <li>
+                                            <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                            <ul class="chose-item checkbox">
+                                                <li><label>
+                                                    <input type="checkbox" value="1">
+                                                    Option one is this and that&mdash;be sure to include why it's great
+                                                </label></li>
+                                                <li><label>
+                                                    <input type="checkbox" value="2">
+                                                    Option one is this and that&mdash;be sure to include why it's great
+                                                </label></li>
+                                                <li><label>
+                                                    <input type="checkbox" value="3">
+                                                    Option one is this and that&mdash;be sure to include why it's great
+                                                </label></li>
+                                            </ul>
+                                            <div class="current-answer">
+                                                正确答案:
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!--简答题-->
+                            <div role="tabpanel" class="tab-pane" id="text">
+                                <table class="table ">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="2" class="text-center">单选题添加</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>标题</td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>是否必填</td>
+                                        <td><input type="checkbox" class=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                            <button type="button" class="btn btn-primary">添加</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="js-text">
+                                    <ul class="qustion-list">
+                                        <li>
+                                            <h5>携带需申报物品出境，通过海关时应选择：</h5>
+                                            <textarea name="" cols="60" rows="5"></textarea>
+                                        </li>
+                                    </ul>
+                                    <div class="current-answer">
+                                        是否必填: <span>是</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showbox hidden">
+                <!-- 成绩管理开始 -->
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h3><span class="label label-default ">条件筛选</span></h3>
+                        <div class="row paddingtop-10">
+                            <div class="col-sm-3 col-md-4">
+                                <div class="form-group">
+                                    <label>年级</label>
+                                    <select class="form-control">
+                                        <option value="大一" selected>大一</option>
+                                        <option value="大二">大二</option>
+                                        <option value="大三">大三</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <div class="form-group">
+                                    <label>班级</label>
+                                    <select class="form-control">
+                                        <option value="计应1503" selected>计应1503</option>
+                                        <option value="计应1504">计应1504</option>
+                                        <option value="计应1505">计应1505</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <div class="form-group">
+                                    <label>考试科目</label>
+                                    <select class="form-control">
+                                        <option value="JavaScript" selected>JavaScript</option>
+                                        <option value="JQuery">JQuery</option>
+                                        <option value="Bootstrip">Bootstrip</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 15px">检索
+                            </button>
+                        </div>
+                        <div class="table-responsive paddingtop-20">
+                            <table class="table table-bordered td-center table-striped">
+                                <thead>
+                                <tr>
+                                    <td><strong>班级</strong></td>
+                                    <td><strong>学号</strong></td>
+                                    <td><strong>姓名</strong></td>
+                                    <td><strong>考试科目</strong></td>
+                                    <td><strong>得分</strong></td>
+                                    <td><strong>操作</strong></td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002500</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002501</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002502</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>计应1503</td>
+                                    <td>2015002503</td>
+                                    <td>张三</td>
+                                    <td>JavaScript</td>
+                                    <td><input type="text" value="95" class="score" disabled></td>
+                                    <td class="text-center"><span><a href="#">修改</a>　<a href="#">删除</a></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-center">
+                                <button type="button" class="btn btn-primary btn-lg">导出成绩</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../js/teacher.js"></script>
+
+</body>
+</html>

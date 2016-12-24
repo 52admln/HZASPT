@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>在线考试系统</title>
+    <title>成绩界面 - 在线考试系统</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <!--data picker-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css">
     <!--<link rel="stylesheet" href="css/login.css">-->
     <link rel="stylesheet" href="../css/student.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -72,9 +73,11 @@
                 </div>
                 <div class="col-md-8">
                     <div><b class="text-info">考试详情：</b></div>
-                    <p>总分：<b class="text-warning">100</b>分 合格分数线：<b class="text-warning">60</b>分 考试时间：<b class="text-warning">2011-11-11</b></p>
+                    <p>总分：<b class="text-warning">100</b>分 合格分数线：<b class="text-warning">60</b>分 考试时间：<b
+                            class="text-warning">2011-11-11</b></p>
                     <table class="table table-hover table-bordered">
-                        <tbody><tr class="success">
+                        <tbody>
+                        <tr class="success">
                             <th>题型</th>
                             <th>总题数</th>
                             <th>答对题数</th>
@@ -96,16 +99,20 @@
                             <td>0.0</td>
                         </tr>
                         <tr>
-                            <td>判断题</td>
+                            <td>简答题</td>
                             <td>20</td>
                             <td>0</td>
                             <td>40.0</td>
                             <td>0.0</td>
                         </tr>
                         <tr>
-                            <td colspan="5" align="left">本次考试共<b class="text-warning">56</b>道题，总分<b class="text-warning">100</b>分，您做对<b class="text-warning">1</b>道题，得到<b class="text-warning">1.00</b>分</td>
+                            <td colspan="5" align="left">本次考试共<b class="text-warning">56</b>道题，总分<b
+                                    class="text-warning">100</b>分，您做对<b class="text-warning">1</b>道题，得到<b
+                                    class="text-warning">1.00</b>分
+                            </td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                     <div class="row">
                         <div class="col-md-7">
                             <div class="input-group input-daterange datepicker">
@@ -115,17 +122,21 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <button type="button" class="btn btn-primary js-score" data-toggle="modal" data-target="#myScore">查看历史成绩</button>
+                            <button type="button" class="btn btn-primary js-score" data-toggle="modal"
+                                    data-target="#myScore">查看历史成绩
+                            </button>
                         </div>
 
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="myScore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="myScore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <h4 class="modal-title" id="myModalLabel">历史成绩</h4>
                             </div>
                             <div class="modal-body">

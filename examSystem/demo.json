@@ -1,0 +1,29 @@
+[
+  {
+    "questions": [
+      {
+        "type": "单选",
+        "content": "单选题",
+        "options": [
+          "选项1",
+          "选项2"
+        ]
+      },
+      {
+        "type": "多选",
+        "content": "多选题",
+        "options": [
+          "选项1",
+          "选项2",
+          "选项3",
+          "选项4"
+        ]
+      },
+      {
+        "type": "文本",
+        "content": "233242",
+        "isRequired": true
+      }
+    ]
+  }
+]

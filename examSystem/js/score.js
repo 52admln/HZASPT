@@ -2,7 +2,8 @@
 //data picker
 $('.datepicker input').datepicker({
     format: 'yyyy-mm-dd',
-    startDate: '-3d'
+    startDate: '-1y',
+    endDate: '+1y'
 });
 
 $(".js-score").on("click", function () {

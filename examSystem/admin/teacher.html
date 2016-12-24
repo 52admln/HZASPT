@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师管理 - 在线考试后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../libs/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- MOCK -->
+    <script src="http://rap.taobao.org/rap.plugin.js?projectId=12128"></script>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">在线考试后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="js-username"></span></a></li>
+                <li><a href="#">个人资料</a></li>
+                <li><a href="#">密码修改</a></li>
+                <li><a href="#" class="js-logout">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <!-- js-student / js-teacher / js-admin -->
+        <div class="col-sm-3 col-md-2 sidebar js-student">
+            <ul class="nav nav-sidebar nav-student">
+                <li class=""><a href="./index.html">学生管理</a></li>
+                <li class="active"><a href="./teacher.html">教师管理</a></li>
+                <li><a href="./question.html">考试管理</a></li>
+            </ul>
+        </div>
+        <!-- 添加学生开始 -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <div class="col-md-2">
+                    <h3><span class="label label-default">教师管理</span></h3>
+                </div>
+                <div class="col-md-8"></div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row" style="padding-top: 50px">
+                <div class="col-md-10">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="myTab">
+                        <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">添加教师</a>
+                        </li>
+                        <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">教师管理</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content" style="padding-top: 50px">
+                        <!--添加教师-->
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <form class="form-horizontal" role="form" id="addTeacher">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">账号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="t_number" placeholder="请输入登录帐号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="t_name" placeholder="请输入名字">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">密码</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="t_password"
+                                               placeholder="请输入密码">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">班级选择</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="t_class" required>
+                                            <option value="1503">计应1503</option>
+                                            <option value="1504">计应1504</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-block ">确定</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--结束-->
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>姓名</th>
+                                    <th>所属班级</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="js-teachers">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--结束-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../js/validate.method.js"></script>
+<script src="../libs/sweetalert/sweetalert.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>
