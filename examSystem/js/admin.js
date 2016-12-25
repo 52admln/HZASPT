@@ -1,4 +1,13 @@
-// 表单验证
+
+
+// 日历选择器
+$('#datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    startDate: '-1y',
+    endDate: '+1y'
+});
+
+// 添加教师表单验证
 $("#addTeacher").validate({
     rules: {
         t_number: {
@@ -42,7 +51,7 @@ $("#addTeacher").validate({
     errorClass: "error",
     errorLabelContainer: "strong"
 });
-
+// 添加学生表单验证
 $("#addStudent").validate({
     rules: {
         s_number: {
@@ -96,6 +105,7 @@ $(".js-teachers").on("click", function (e) {
             });
     }
 })
+// 学生列表删除按钮
 $(".js-students").on("click", function (e) {
     if (e.target && e.target.nodeName.toLowerCase() === "button") {
         swal({
@@ -157,9 +167,114 @@ function renderStudent() {
         }
     })
 }
-
+//初始化,渲染列表
 function init() {
     renderTeaacher();
     renderStudent();
 }
 init();
+
+
+
+
+
+$(function() {
+    $('#myTab a:last').tab('show')
+});
+$('.test-title').blur(function() {
+    var testtitle = $('.test-title').val();
+    console.log(testtitle);
+    if (testtitle == "") {
+        swal("不能为空!", "请填写好考试标题", "error")
+    }
+});
+
+$('#myStateButton').on('click', function() {
+    var $btn = $(this).button('loading');
+    $btn.button('reset');
+});
+
+
+var keywordArr = [];
+$('.selectBox a').on('click', function(e) {
+    console.log(e.target.innerHTML);
+    $(e.target).addClass('activeA');
+    keywordArr.push(e.target.innerHTML);
+    var newArr = keywordArr.join('、');
+    console.log(keywordArr);
+    $('#addkeyword').html(newArr);
+});
+
+$('.retrievalResult .btn-warning').on('click', function(e) {
+    this.parentNode.parentNode.parentNode.remove();
+});
+$('#tbody a').on('click', function(e) {
+    console.log(e.target.innerHTML);
+    switch (e.target.innerHTML) {
+        case "修改":
+            $('.score').removeAttr('disabled');
+            break;
+        case "删除":
+            console.log(this.parentNode.parentNode.parentNode);
+            this.parentNode.parentNode.parentNode.remove();
+            break;
+        default:
+
+
+            break;
+    }
+});
+
+function creatBox(e) {
+    var arr1 = ['单选题试卷来源：第一套试卷', '单选题试卷来源：第二套试卷', '单选题试卷来源：第三套试卷', '单选题试卷来源：第四套试卷'];
+    var arr2 = ['多选题试卷来源：第一套试卷', '多选题试卷来源：第二套试卷', '多选题试卷来源：第三套试卷', '多选题试卷来源：第四套试卷'];
+    var arr3 = ['判断题试卷来源：第一套试卷', '判断题试卷来源：第二套试卷', '判断题试卷来源：第三套试卷', '判断题试卷来源：第四套试卷'];
+    var arr4 = ['操作题试卷来源：第一套试卷', '操作题试卷来源：第二套试卷', '操作题试卷来源：第三套试卷', '操作题试卷来源：第四套试卷'];
+    Array.prototype.getRandomItem = function() {
+        return this[Math.floor(Math.random() * this.length)]
+    }
+    var a = arr1.getRandomItem();
+    var b = arr2.getRandomItem();
+    var c = arr3.getRandomItem();
+    var d = arr4.getRandomItem();
+    str = '<div class="retrivealBox clearfix">' +
+        '<ul class="retrievalResult pull-left">' +
+        '<li>' + a + '&nbsp&nbsp&nbsp&nbsp' + b + '</li>' +
+        '<li>' + c + '&nbsp&nbsp&nbsp&nbsp' + d + '</li>' +
+        '</ul>' +
+        '<ul class="retrievalResult clearfix pull-right btngroup">' +
+        '<li class="pull-left">' +
+        '<button type="button" class="btn btn-primary successMessage " onclick="successMessage()">' + '发布试卷' + '</button>' +
+        '</li>' +
+        '</ul>' +
+        '</div>';
+    document.getElementById("creatbox").innerHTML += str;
+};
+
+function successMessage(e) {
+    $('#myModal').modal('show');
+};
+
+function successMessage1(e) {
+    $('#myModa2').modal('show');
+};
+
+function DIYchoose() {
+    var danxuanti = $(".form-control").eq(0).find("option:selected").text();
+    var duoxuanti = $(".form-control").eq(1).find("option:selected").text();
+    var panduanti = $(".form-control").eq(2).find("option:selected").text();
+    var caozuoti = $(".form-control").eq(3).find("option:selected").text();
+    console.log(danxuanti + duoxuanti + panduanti + caozuoti);
+    str = '<div class="retrivealBox clearfix">' +
+        '<ul class="retrievalResult pull-left">' +
+        '<li>' + '单选题试卷来源' + danxuanti + '&nbsp&nbsp&nbsp&nbsp' + '多选题试卷来源' + duoxuanti + '</li>' +
+        '<li>' + '判断题试卷来源' + panduanti + '&nbsp&nbsp&nbsp&nbsp' + '操作题试卷来源' + caozuoti + '</li>' +
+        '</ul>' +
+        '<ul class="retrievalResult clearfix pull-right btngroup">' +
+        '<li class="pull-left">' +
+        '<button type="button" class="btn btn-primary successMessage " onclick="successMessage1()">' + '发布试卷' + '</button>' +
+        '</li>' +
+        '</ul>' +
+        '</div>';
+    document.getElementById('diybox').innerHTML += str;
+};

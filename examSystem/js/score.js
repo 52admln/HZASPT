@@ -1,6 +1,6 @@
 
 //data picker
-$('.datepicker input').datepicker({
+$('#datepicker').datepicker({
     format: 'yyyy-mm-dd',
     startDate: '-1y',
     endDate: '+1y'

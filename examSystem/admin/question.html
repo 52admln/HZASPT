@@ -8,6 +8,10 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!--data picker-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" type="text/css" href="../libs/sweetalert/sweetalert.css">
     <!--<link rel="stylesheet" href="css/login.css">-->
     <link rel="stylesheet" href="../css/admin.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -101,46 +105,196 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row paddingtop-10">
-                                            <div class="col-sm-6 col-md-3">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="">
+                                                    <label>考试题目</label>
+                                                    <input type="text" class="form-control test-title">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label>单选题</label>
-                                                    <select class="form-control" name="RadioButtonList ">
-                                                        <option value="第一套试卷" selected>第一套试卷</option>
-                                                        <option value="第二套试卷">第二套试卷</option>
-                                                        <option value="第三套试卷">第三套试卷</option>
-                                                    </select>
+                                                    <label>考试时间段</label>
+                                                    <div class="input-daterange input-group " id="datepicker">
+                                                        <input type="text" class="input-sm form-control" name="start" />
+                                                        <span class="input-group-addon">to</span>
+                                                        <input type="text" class="input-sm form-control" name="end" />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
-                                                    <label>多选题</label>
+                                                    <label>题型</label>
                                                     <select class="form-control">
-                                                        <option value="第一套试卷" selected>第一套试卷</option>
-                                                        <option value="第二套试卷">第二套试卷</option>
-                                                        <option value="第三套试卷">第三套试卷</option>
+                                                        <option value="选择题" selected>选择题</option>
+                                                        <option value="多选题">多选题</option>
+                                                        <option value="判断题">判断题</option>
+                                                        <option value="操作题">操作题</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
-                                                    <label>判断题</label>
+                                                    <label>分值</label>
                                                     <select class="form-control">
-                                                        <option value="第一套试卷" selected>第一套试卷</option>
-                                                        <option value="第二套试卷">第二套试卷</option>
-                                                        <option value="第三套试卷">第三套试卷</option>
+                                                        <option value="2" selected>2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
-                                                    <label>操作题</label>
+                                                    <label>题数</label>
                                                     <select class="form-control">
-                                                        <option value="第一套试卷" selected>第一套试卷</option>
-                                                        <option value="第二套试卷">第二套试卷</option>
-                                                        <option value="第三套试卷">第三套试卷</option>
+                                                        <option value="10" selected>10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>试卷分类</label>
+                                                    <select class="form-control">
+                                                        <option value="Bootstrip" selected>Bootstrip</option>
+                                                        <option value="JavaScriptJQuery">JavaScriptJQuery</option>
+                                                        <option value="JQuery">JQuery</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题型</label>
+                                                    <select class="form-control">
+                                                        <option value="选择题" selected>选择题</option>
+                                                        <option value="多选题">多选题</option>
+                                                        <option value="判断题">判断题</option>
+                                                        <option value="操作题">操作题</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>分值</label>
+                                                    <select class="form-control">
+                                                        <option value="2" selected>2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题数</label>
+                                                    <select class="form-control">
+                                                        <option value="10" selected>10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>试卷分类</label>
+                                                    <select class="form-control">
+                                                        <option value="Bootstrip" selected>Bootstrip</option>
+                                                        <option value="JavaScriptJQuery">JavaScriptJQuery</option>
+                                                        <option value="JQuery">JQuery</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题型</label>
+                                                    <select class="form-control">
+                                                        <option value="选择题" selected>选择题</option>
+                                                        <option value="多选题">多选题</option>
+                                                        <option value="判断题">判断题</option>
+                                                        <option value="操作题">操作题</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>分值</label>
+                                                    <select class="form-control">
+                                                        <option value="2" selected>2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题数</label>
+                                                    <select class="form-control">
+                                                        <option value="10" selected>10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>试卷分类</label>
+                                                    <select class="form-control">
+                                                        <option value="Bootstrip" selected>Bootstrip</option>
+                                                        <option value="JavaScriptJQuery">JavaScriptJQuery</JavaScriptJQuery>
+                                                        <option value="JQuery">JQuery</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题型</label>
+                                                    <select class="form-control">
+                                                        <option value="选择题" selected>选择题</option>
+                                                        <option value="多选题">多选题</option>
+                                                        <option value="判断题">判断题</option>
+                                                        <option value="操作题">操作题</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>分值</label>
+                                                    <select class="form-control">
+                                                        <option value="2" selected>2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>题数</label>
+                                                    <select class="form-control">
+                                                        <option value="2" selected>2</option>
+                                                        <option value="4">4</option>
+                                                        <option value="6">6</option>
+                                                        <option value="8">8</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label>试卷分类</label>
+                                                    <select class="form-control">
+                                                        <option value="Bootstrip" selected>Bootstrip</option>
+                                                        <option value="JavaScriptJQuery">JavaScriptJQuery</option>
+                                                        <option value="JQuery">JQuery</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
                                             <button type="button" class="btn btn-primary pull-left" style=" margin-left: 15px" onclick="DIYchoose();">生成试卷
                                             </button>
                                         </div>
@@ -260,6 +414,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
         <!-- 试题添加结束  -->
             </div>
@@ -274,6 +429,8 @@
 <script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script src="../libs/sweetalert/sweetalert.min.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/admin.js"></script>
 </body>

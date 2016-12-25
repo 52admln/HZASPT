@@ -1,113 +1,3 @@
-$(function () {
-    $('#myTab a:last').tab('show')
-});
-
-
-$('#myStateButton').on('click', function () {
-    var $btn = $(this).button('loading');
-    $btn.button('reset');
-});
-$('#typeofchose li').on('click', function (e) {
-    console.log(e.target.innerHTML);
-    $(this).addClass('active').siblings().removeClass('active');
-    switch (e.target.innerHTML) {
-        case "题目管理":
-            _showCurrent(0);
-            break;
-        case "成绩管理":
-            _showCurrent(1);
-            break
-    }
-    function _showCurrent(index) {
-        $(".showbox").eq(index).removeClass("hidden").siblings(".showbox").addClass("hidden");
-    }
-});
-
-var keywordArr = [];
-$('.selectBox a').on('click', function (e) {
-    console.log(e.target.innerHTML);
-    $(e.target).addClass('activeA');
-    keywordArr.push(e.target.innerHTML);
-    var newArr = keywordArr.join('、');
-    console.log(keywordArr);
-    $('#addkeyword').html(newArr);
-});
-
-$('.retrievalResult .btn-warning').on('click', function (e) {
-    this.parentNode.parentNode.parentNode.remove();
-});
-$('#tbody a').on('click', function (e) {
-    console.log(e.target.innerHTML);
-    switch (e.target.innerHTML) {
-        case "修改":
-            $('.score').removeAttr('disabled');
-            break;
-        case "删除":
-            console.log(this.parentNode.parentNode.parentNode);
-            this.parentNode.parentNode.parentNode.remove();
-            break;
-        default:
-
-
-            break;
-    }
-});
-
-function creatBox(e) {
-    var arr1 = ['单选题试卷来源：第一套试卷', '单选题试卷来源：第二套试卷', '单选题试卷来源：第三套试卷', '单选题试卷来源：第四套试卷'];
-    var arr2 = ['多选题试卷来源：第一套试卷', '多选题试卷来源：第二套试卷', '多选题试卷来源：第三套试卷', '多选题试卷来源：第四套试卷'];
-    var arr3 = ['判断题试卷来源：第一套试卷', '判断题试卷来源：第二套试卷', '判断题试卷来源：第三套试卷', '判断题试卷来源：第四套试卷'];
-    var arr4 = ['操作题试卷来源：第一套试卷', '操作题试卷来源：第二套试卷', '操作题试卷来源：第三套试卷', '操作题试卷来源：第四套试卷'];
-    Array.prototype.getRandomItem = function () {
-        return this[Math.floor(Math.random() * this.length)]
-    }
-    var a = arr1.getRandomItem();
-    var b = arr2.getRandomItem();
-    var c = arr3.getRandomItem();
-    var d = arr4.getRandomItem();
-    str = '<div class="retrivealBox clearfix">' +
-        '<ul class="retrievalResult pull-left">' +
-        '<li>' + a + '&nbsp&nbsp&nbsp&nbsp' + b + '</li>' +
-        '<li>' + c + '&nbsp&nbsp&nbsp&nbsp' + d + '</li>' +
-        '</ul>' +
-        '<ul class="retrievalResult clearfix pull-right btngroup">' +
-        '<li class="pull-left">' +
-        '<button type="button" class="btn btn-primary successMessage " onclick="successMessage()">' + '发布试卷' + '</button>' +
-        '</li>' +
-        '</ul>' +
-        '</div>';
-    document.getElementById("creatbox").innerHTML += str;
-};
-
-function successMessage(e) {
-    $('#myModal').modal('show');
-};
-
-function successMessage1(e) {
-    $('#myModa2').modal('show');
-};
-
-function DIYchoose() {
-    var danxuanti = $(".form-control").eq(0).find("option:selected").text();
-    var duoxuanti = $(".form-control").eq(1).find("option:selected").text();
-    var panduanti = $(".form-control").eq(2).find("option:selected").text();
-    var caozuoti = $(".form-control").eq(3).find("option:selected").text();
-    console.log(danxuanti + duoxuanti + panduanti + caozuoti);
-    str = '<div class="retrivealBox clearfix">' +
-        '<ul class="retrievalResult pull-left">' +
-        '<li>' + '单选题试卷来源' + danxuanti + '&nbsp&nbsp&nbsp&nbsp' + '多选题试卷来源' + duoxuanti + '</li>' +
-        '<li>' + '判断题试卷来源' + panduanti + '&nbsp&nbsp&nbsp&nbsp' + '操作题试卷来源' + caozuoti + '</li>' +
-        '</ul>' +
-        '<ul class="retrievalResult clearfix pull-right btngroup">' +
-        '<li class="pull-left">' +
-        '<button type="button" class="btn btn-primary successMessage " onclick="successMessage1()">' + '发布试卷' + '</button>' +
-        '</li>' +
-        '</ul>' +
-        '</div>';
-    document.getElementById('diybox').innerHTML += str;
-};
-
-
 var storage = {
     "questions": []
     //"questions": [
@@ -144,7 +34,6 @@ var storage = {
     //]
 };
 
-
 $(".js-remove").delegate("button", "click", function () {
     $(this).closest(".form-group").remove();
 });
@@ -162,7 +51,7 @@ $(".js-additem").on("click", function () {
         + '</div>';
     $(element).insertBefore($(this));
 });
-
+//单选题
 $(".js-single-ques").on("click", function () {
     var cur_storage = {
         //        "type": "单选",
@@ -190,6 +79,7 @@ $(".js-single-ques").on("click", function () {
     renderData();
 
 });
+//多选题
 $(".js-multi-ques").on("click", function () {
     var cur_storage = {
         //        "type": "单选",
@@ -217,6 +107,7 @@ $(".js-multi-ques").on("click", function () {
     localstorage.save(storage);
     renderData();
 });
+//简答题
 $(".js-text-ques").on("click", function () {
     var cur_storage = {
         //        "type": "单选",
@@ -239,8 +130,7 @@ $(".js-text-ques").on("click", function () {
     renderData();
 
 });
-
-
+// 存入localstorage
 var localstorage = {
     save: function (data) {
         window.localStorage.setItem("questions", JSON.stringify(data));
@@ -249,7 +139,7 @@ var localstorage = {
         return window.localStorage.getItem("questions") || '{"questions":[]}';
     }
 };
-
+//渲染数据
 function renderData() {
     var data = JSON.parse(localstorage.get());
     var text = "",
@@ -314,7 +204,7 @@ function renderData() {
     $(".js-multi").html(multi);
     $(".js-single").html(single);
 }
-
+// 初始化,有数据则渲染
 function init() {
     storage = JSON.parse(localstorage.get());
     if (storage.questions) {
@@ -322,3 +212,136 @@ function init() {
     }
 }
 init();
+
+
+
+
+//导出Excel文件
+
+var tableToExcel = (function () {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+        template =
+            '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+        base64 = function (s) {
+            return window.btoa(unescape(encodeURIComponent(s)))
+        },
+        format = function (s, c) {
+            return s.replace(/{(\w+)}/g, function (m, p) {
+                return c[p];
+            })
+        }
+    return function (table, name, filename) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = {
+            worksheet: name || 'Worksheet',
+            table: table.innerHTML
+        }
+
+        document.getElementById("dlink").href = uri + base64(format(template, ctx));
+        document.getElementById("dlink").download = filename;
+        document.getElementById("dlink").click();
+
+    }
+})();
+
+var idTmr;
+
+function getExplorer() {
+    var explorer = window.navigator.userAgent;
+    //ie
+    if (explorer.indexOf("MSIE") >= 0) {
+        return 'ie';
+    }
+    //firefox
+    else if (explorer.indexOf("Firefox") >= 0) {
+        return 'Firefox';
+    }
+    //Chrome
+    else if (explorer.indexOf("Chrome") >= 0) {
+        return 'Chrome';
+    }
+    //Opera
+    else if (explorer.indexOf("Opera") >= 0) {
+        return 'Opera';
+    }
+    //Safari
+    else if (explorer.indexOf("Safari") >= 0) {
+        return 'Safari';
+    }
+}
+
+function method5(tableid) {
+    if (getExplorer() == 'ie') {
+        var curTbl = document.getElementById(tableid);
+        var oXL = new ActiveXObject("Excel.Application");
+        var oWB = oXL.Workbooks.Add();
+        var xlsheet = oWB.Worksheets(1);
+        var sel = document.body.createTextRange();
+        sel.moveToElementText(curTbl);
+        sel.select();
+        sel.execCommand("Copy");
+        xlsheet.Paste();
+        oXL.Visible = true;
+
+        try {
+            var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+        } catch (e) {
+            print("Nested catch caught " + e);
+        } finally {
+            oWB.SaveAs(fname);
+            oWB.Close(savechanges = false);
+            oXL.Quit();
+            oXL = null;
+            idTmr = window.setInterval("Cleanup();", 1);
+        }
+
+    } else {
+        tableToExcel(tableid)
+    }
+}
+
+function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+}
+var tableToExcel = (function () {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+        template = '<html><head><meta charset="UTF-8"></head><body><table>{table}</table></body></html>',
+        base64 = function (s) {
+            return window.btoa(unescape(encodeURIComponent(s)))
+        },
+        format = function (s, c) {
+            return s.replace(/{(\w+)}/g,
+                function (m, p) {
+                    return c[p];
+                })
+        }
+    return function (table, name) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = {
+            worksheet: name || 'Worksheet',
+            table: table.innerHTML
+        }
+        window.location.href = uri + base64(format(template, ctx))
+    }
+})();
+
+
+// 右侧内容显示
+
+$('#typeofchose li').on('click', function(e) {
+    console.log(e.target.innerHTML);
+    $(this).addClass('active').siblings().removeClass('active');
+    switch (e.target.innerHTML) {
+        case "题目管理":
+            _showCurrent(0);
+            break;
+        default:
+            _showCurrent(1);
+            break
+    }
+
+    function _showCurrent(index) {
+        $(".showbox").eq(index).removeClass("hidden").siblings(".showbox").addClass("hidden");
+    }
+});

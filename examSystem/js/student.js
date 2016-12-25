@@ -45,11 +45,25 @@ $(".js-start").on("click", function () {
 $(".js-submit").on("click", function () {
     // TODO 验证是否所有题目都已经完成
     // if(isFinished()){
-        sessionStorage.removeItem("lefttime");
-        alert("交卷成功!");
-        $(".on-start").addClass("hidden");
-        $(".before-start").removeClass("hidden");
-        clearInterval(timer);
+
+    swal({
+            title: "确认提交?",
+            text: "提交成功后将上传成绩",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText: "关闭",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确认",
+            closeOnConfirm: false
+        },
+        function () {
+            swal("提交成功!", "你的成绩已经成功上传至服务器", "success");
+            $(".on-start").addClass("hidden");
+            $(".before-start").removeClass("hidden");
+            clearInterval(timer);
+            console.log(1);
+            sessionStorage.removeItem("lefttime");
+        });
     // }
 
 });
