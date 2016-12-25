@@ -1,5 +1,3 @@
-
-
 // 日历选择器
 $('#datepicker').datepicker({
     format: 'yyyy-mm-dd',
@@ -175,13 +173,10 @@ function init() {
 init();
 
 
-
-
-
-$(function() {
+$(function () {
     $('#myTab a:last').tab('show')
 });
-$('.test-title').blur(function() {
+$('.test-title').blur(function () {
     var testtitle = $('.test-title').val();
     console.log(testtitle);
     if (testtitle == "") {
@@ -189,26 +184,41 @@ $('.test-title').blur(function() {
     }
 });
 
-$('#myStateButton').on('click', function() {
+$('#myStateButton').on('click', function () {
     var $btn = $(this).button('loading');
     $btn.button('reset');
 });
 
+// 关键字筛选
+var keywordArr = [], keywordObj = {};
+$('.selectBox a').on('click', function (e) {
 
-var keywordArr = [];
-$('.selectBox a').on('click', function(e) {
-    console.log(e.target.innerHTML);
-    $(e.target).addClass('activeA');
-    keywordArr.push(e.target.innerHTML);
+    var value = e.target.innerHTML;
+
+        if (!$(e.target).hasClass("activeA")) {
+            $(e.target).addClass('activeA');
+            if (!keywordObj[value]) {
+                keywordObj[value] = true;
+                keywordArr.push(value);
+            }
+        } else {
+            $(e.target).removeClass('activeA');
+            keywordArr.filter(function (ele, index) {
+                if(ele == value){
+                keywordArr.splice(index, 1);
+                }
+            });
+            keywordObj[value] = false;
+        }
     var newArr = keywordArr.join('、');
     console.log(keywordArr);
     $('#addkeyword').html(newArr);
 });
 
-$('.retrievalResult .btn-warning').on('click', function(e) {
+$('.retrievalResult .btn-warning').on('click', function (e) {
     this.parentNode.parentNode.parentNode.remove();
 });
-$('#tbody a').on('click', function(e) {
+$('#tbody a').on('click', function (e) {
     console.log(e.target.innerHTML);
     switch (e.target.innerHTML) {
         case "修改":
@@ -219,8 +229,6 @@ $('#tbody a').on('click', function(e) {
             this.parentNode.parentNode.parentNode.remove();
             break;
         default:
-
-
             break;
     }
 });
@@ -230,7 +238,7 @@ function creatBox(e) {
     var arr2 = ['多选题试卷来源：第一套试卷', '多选题试卷来源：第二套试卷', '多选题试卷来源：第三套试卷', '多选题试卷来源：第四套试卷'];
     var arr3 = ['判断题试卷来源：第一套试卷', '判断题试卷来源：第二套试卷', '判断题试卷来源：第三套试卷', '判断题试卷来源：第四套试卷'];
     var arr4 = ['操作题试卷来源：第一套试卷', '操作题试卷来源：第二套试卷', '操作题试卷来源：第三套试卷', '操作题试卷来源：第四套试卷'];
-    Array.prototype.getRandomItem = function() {
+    Array.prototype.getRandomItem = function () {
         return this[Math.floor(Math.random() * this.length)]
     }
     var a = arr1.getRandomItem();
