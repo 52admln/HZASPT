@@ -345,3 +345,22 @@ $('#typeofchose li').on('click', function(e) {
         $(".showbox").eq(index).removeClass("hidden").siblings(".showbox").addClass("hidden");
     }
 });
+
+// 删除成绩
+$('#tbody a').on('click',function (e) {
+    console.log(e.target.innerHTML);
+    switch(e.target.innerHTML)
+    {
+        case "修改":
+            $(this).closest("td").prev().find("input").removeAttr('disabled');
+            break;
+        case "删除":
+            console.log(this.parentNode.parentNode.parentNode);
+            this.parentNode.parentNode.parentNode.remove();
+            break;
+        default:
+
+
+            break;
+    }
+});
