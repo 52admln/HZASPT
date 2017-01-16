@@ -131,6 +131,7 @@ function renderTeaacher() {
         success: function (source) {
             // console.log(source.data);
             var string = "";
+
             $.each(source.data, function (index, item) {
                 string += '<tr>'
                     + '<td>' + item.user + '</td>'
